@@ -84,7 +84,7 @@ declare module 'rpi-sk6812-native' {
      *
      * @param brightness  (0-255) 
      */
-    export function setBrightness(brightness: number): void;
+    export function setBrightness(brightness: number, render?: boolean): void;
 
     /**
      * clears all LEDs, resets the PWM and DMA-parts and deallocates
