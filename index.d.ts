@@ -48,6 +48,10 @@ declare module 'rpi-sk6812-native' {
          * Apply gamma correction
          */
         gammaCorrection?: boolean,
+        /**
+         * convert RGB colors to RGBW
+         */
+        rgbToRgbw?: boolean,
     }
 
 
