@@ -92,27 +92,27 @@ void init(const Nan::FunctionCallbackInfo<v8::Value>& info) {
         symBrightness = Nan::New<String>("brightness").ToLocalChecked(),
         symStripType = Nan::New<String>("strip_type").ToLocalChecked();
 
-    if(config->HasOwnProperty(symFreq)) {
+    if(Nan::HasOwnProperty(config, symFreq).ToChecked()) {
       ledstring.freq = config->Get(symFreq)->Uint32Value();
     }
 
-    if(config->HasOwnProperty(symDmaNum)) {
+    if(Nan::HasOwnProperty(config, symDmaNum).ToChecked()) {
       ledstring.dmanum = config->Get(symDmaNum)->Int32Value();
     }
 
-    if(config->HasOwnProperty(symGpioPin)) {
+    if(Nan::HasOwnProperty(config, symGpioPin).ToChecked()) {
       ledstring.channel[0].gpionum = config->Get(symGpioPin)->Int32Value();
     }
 
-    if(config->HasOwnProperty(symInvert)) {
+    if(Nan::HasOwnProperty(config, symInvert).ToChecked()) {
       ledstring.channel[0].invert = config->Get(symInvert)->Int32Value();
     }
 
-    if(config->HasOwnProperty(symBrightness)) {
+    if(Nan::HasOwnProperty(config, symBrightness).ToChecked()) {
       ledstring.channel[0].brightness = config->Get(symBrightness)->Int32Value();
     }
 
-    if(config->HasOwnProperty(symStripType)) {
+    if(Nan::HasOwnProperty(config, symStripType).ToChecked()) {
       ledstring.channel[0].strip_type = config->Get(symStripType)->Int32Value();
     }
   }
