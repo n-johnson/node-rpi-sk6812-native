@@ -11,6 +11,7 @@
     "hardware"
   ],
   "main": "index.js",
+  "types": "index.d.ts",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -25,5 +26,7 @@
   "dependencies": {
     "nan": "^2.0.9"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "~7.0.18"
+  }
 }

@@ -3,12 +3,15 @@ var ws281x = require('../index.js');
 var NUM_LEDS = parseInt(process.argv[2], 10) || 10,
     pixelData = new Uint32Array(NUM_LEDS);
 
-ws281x.init(NUM_LEDS);
+ws281x.init(NUM_LEDS, {
+    strip_type: ws281x.STRIP_TYPES.SK6812W,
+    brightness: 255
+});
 
 // ---- trap the SIGINT and reset before exit
 process.on('SIGINT', function () {
-  ws281x.reset();
-  process.nextTick(function () { process.exit(0); });
+    ws281x.reset();
+    process.nextTick(function () { process.exit(0); });
 });
 
 
@@ -16,13 +19,13 @@ process.on('SIGINT', function () {
 var offset = 0;
 setInterval(function () {
   var i=NUM_LEDS;
-  while(i--) {
-      pixelData[i] = 0;
-  }
-  pixelData[offset] = 0xffffff;
+    while(i--) {
+        pixelData[i] = 0;
+    }
+    pixelData[offset] = 0xffffffff;
 
-  offset = (offset + 1) % NUM_LEDS;
-  ws281x.render(pixelData);
+    offset = (offset + 1) % NUM_LEDS;
+    ws281x.render(pixelData);
 }, 100);
 
 console.log('Press <ctrl>+C to exit.');
